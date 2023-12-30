@@ -3,14 +3,27 @@ import re
 import dash
 from dash import html, dcc
 from dash.dependencies import Input, Output
+import dropbox 
 
 #nltk.download('punkt')
 #nltk.download('stopwords')
 
 # Read the text from the file
-file_path = 'taler01-22.txt'
-with open(file_path, 'r', encoding='utf-8') as file:
-    t = file.read()
+DROPBOX_ACCESS_TOKEN= os.environ.get('DROPBOX_ACCESS_TOKEN')
+# Dropbox file path
+DROPBOX_FILE_PATH = "/taler.txt"
+
+# Initialize Dropbox client
+dbx = dropbox.Dropbox(DROPBOX_ACCESS_TOKEN)
+
+
+# Download the file
+metadata, response = dbx.files_download(DROPBOX_FILE_PATH)
+
+    # Decode the content as a string and create a Pandas DataFrame
+content_str = response.content.decode('utf-8')
+text =  with open(file_path, 'r', encoding='utf-8') as file:
+            t = file.read()
 
 # Tokenize the text into words
 words = nltk.word_tokenize(t)
