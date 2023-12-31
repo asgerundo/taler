@@ -24,8 +24,8 @@ metadata, response = dbx.files_download(DROPBOX_FILE_PATH)
 
     # Decode the content as a string and create a Pandas DataFrame
 content_str = response.content.decode('utf-8')
-text =  with open(file_path, 'r', encoding='utf-8') as file:
-            t = file.read()
+with open(file_path, 'r', encoding='utf-8') as file:
+    text = file.read()
 
 # Tokenize the text into words
 words = nltk.word_tokenize(t)
