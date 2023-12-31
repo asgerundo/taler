@@ -5,7 +5,7 @@ from dash import html, dcc
 from dash.dependencies import Input, Output
 import dropbox 
 import os
-import panda
+import pandas
 
 #nltk.download('punkt')
 #nltk.download('stopwords')
