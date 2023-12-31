@@ -4,6 +4,7 @@ import dash
 from dash import html, dcc
 from dash.dependencies import Input, Output
 import dropbox 
+import os
 
 #nltk.download('punkt')
 #nltk.download('stopwords')
@@ -45,7 +46,7 @@ app = dash.Dash(__name__)
 
 def calculate_word_probabilities(text):
     # Remove punctuation and convert to lowercase
-    text = re.sub(r'[^\w\s]', '', text.lower())
+    text = re.sub(r'[^\w\s]', '', text.lower(), flags=re.UNICODE)
     
     # Split the text into words
     words = text.split()
@@ -101,4 +102,4 @@ def update_output(selected_word):
         return ''
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8090)
+    app.run_server(debug=True)
